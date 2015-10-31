@@ -24,7 +24,22 @@ var handler = function (compileStep) {                               // 5
   };                                                                 // 11
                                                                      // 12
   try {                                                              // 13
-    var output = webppl.compile(source, options);                // 14
+    function printWebPPLValue(x) {
+      if (isErp(x)) {
+        x.print();
+      } else {
+        console.log(x);
+      }
+    }                                                               // 13
+    var compiledCode = webppl.compile(source, options);
+    var output = 'var webppl = Meteor.npmRequire("' + "webppl" + '");\n';
+    output += (
+      printWebPPLValue.toString() + '\n' +
+      'var topK = function(s, x){ \n' +
+      " console.log('\\n* Program return value:\\n'); \n" +
+      ' printWebPPLValue(x); \n};\n\n');
+    output += 'var main = ' + compiledCode + '\n\n';
+    output += "main({}, topK, '');";                // 14
   } catch (e) {                                                      // 15
     throw new Error(                                                 // 16
       compileStep.inputPath + ':' +                                  // 17

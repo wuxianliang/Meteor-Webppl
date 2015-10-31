@@ -1,7 +1,7 @@
 Package.describe({
   name: 'wuxianliang:webppl-compiler',
   summary: "Webppl, a probabilistic programming language for web.",
-  version: "0.0.1",
+  version: "0.0.3",
   git: "https://github.com/wuxianliang/Meteor-Webppl.git"
 });
 
