@@ -9,7 +9,7 @@ Package._transitional_registerBuildPlugin({
   name: "compileWebppl",
   use: [],
   sources: [
-    'plugin/compileWeppl.js'
+    'plugin/compileWebppl.js'
   ],
   npmDependencies: {
     "webppl": "0.3.1"
